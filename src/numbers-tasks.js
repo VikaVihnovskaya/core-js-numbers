@@ -519,8 +519,16 @@ function getFloatOnString(str) {
  * '1.234', 2           => 1
  * '10', 8              => 8
  */
-function getIntegerOnString(/* str, base */) {
-  throw new Error('Not implemented');
+function getIntegerOnString(str, base) {
+  try {
+    const intValue = Number.parseInt(str, base);
+    if (Number.isNaN(intValue)) {
+      return Number.NaN;
+    }
+    return intValue;
+  } catch (err) {
+    return Number.NaN;
+  }
 }
 
 /**
